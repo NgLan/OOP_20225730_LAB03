@@ -55,12 +55,6 @@ public class Cart {
 		qtyOrdered--;
 	}
 	
-	public void printCart() {
-		for (DigitalVideoDisc disc : itemsOrdered) {
-				System.out.println(disc.toString());
-		}
-	}	
-	
 	public float totalCost() {
 		float sum = 0;
 		for (DigitalVideoDisc disc : itemsOrdered) {
@@ -68,5 +62,37 @@ public class Cart {
 		}
 		return sum;
 	}
+	
+	public void search(int id) {
+		boolean isFound = false;
+		for (DigitalVideoDisc disc : itemsOrdered) {
+			if (disc.getId() == id) {
+				System.out.println(disc.toString());
+				isFound = true;
+			}
+		}
+		if (!isFound) System.out.println("No match is found");
+	}
+	
+	public void search(String title) {
+		boolean isFound = false;
+		for (DigitalVideoDisc disc : itemsOrdered) {
+			if (disc.isMatch(title)) {
+				System.out.println(disc.toString());
+				isFound = true;
+			}
+		}
+		if (!isFound) System.out.println("No match is found");
+	}
+	
+	public void print() {
+		System.out.println("***********************CART***********************");
+		System.out.println("Ordered Items:");
+		for (DigitalVideoDisc disc : itemsOrdered) {
+			System.out.println(disc.toString());
+		}
+		System.out.println("Total cost: " + totalCost());
+		System.out.println("***************************************************");
+	}	
 }
 

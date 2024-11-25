@@ -71,10 +71,15 @@ public class DigitalVideoDisc {
 	public void setTitle(String title) {
 		this.title = title;
 	}
+	
+	boolean isMatch(String title) {
+		if (this.title == title) return true;
+		else return false;
+	}
 
 	@Override
 	public String toString() {
-		return "DigitalVideoDisc [title=" + title + ", category=" + category + ", director=" + director + ", length="
-				+ length + ", cost=" + cost + "]";
+		return id + ". DVD - " + title + " - " + category + " - " + director + " - "
+				+ length + ": " + cost + "$";
 	}
 }
