@@ -1,6 +1,8 @@
+import java.util.ArrayList;
+
 public class Cart {
 	public static final int MAX_NUMBERS_ORDERED = 20;
-	private DigitalVideoDisc itemsOrdered[] = new DigitalVideoDisc[MAX_NUMBERS_ORDERED];
+	private ArrayList<DigitalVideoDisc> itemsOrdered = new ArrayList<>();
 	private int qtyOrdered;
 	
 	public int getQtyOrdered() {
@@ -9,32 +11,60 @@ public class Cart {
 
 	public void addDigitalVideoDisc(DigitalVideoDisc disc) {
 		if (qtyOrdered < MAX_NUMBERS_ORDERED) {
-			itemsOrdered[qtyOrdered] = disc;
+			itemsOrdered.add(disc);
 			qtyOrdered++;
-			System.out.println("The disc has been added");
+			System.out.println("The disc " + disc.getTitle() + " has been added");
 		} else {
 			System.out.println("The cart is almost full");
 		}
 	}
 	
-	public void removeDigitalVideoDisc(DigitalVideoDisc disc) {
-		for (int i = 0; i < MAX_NUMBERS_ORDERED; i++) {
-			if (itemsOrdered[i] == disc) {
-				qtyOrdered--;
+	public void addDigitalVideoDisc(DigitalVideoDisc[] dvdList) {
+		for (DigitalVideoDisc disc : dvdList) {
+			if (qtyOrdered < MAX_NUMBERS_ORDERED) {
+				itemsOrdered.add(disc);
+				qtyOrdered++;
+				System.out.println("The disc " + disc.getTitle() + " has been added");
+			} else {
+				System.out.println("The cart is almost full");
+				break;
 			}
 		}
 	}
 	
+	public void addDigitalVideoDiscVarArgs(DigitalVideoDisc... dvds) {
+		for (DigitalVideoDisc disc : dvds) {
+			if (qtyOrdered < MAX_NUMBERS_ORDERED) {
+				itemsOrdered.add(disc);
+				qtyOrdered++;
+				System.out.println("The disc " + disc.getTitle() + " has been added");
+			} else {
+				System.out.println("The cart is almost full");
+				break;
+			}
+		}
+	}
+	
+	public void addDigitalVideoDisc(DigitalVideoDisc dvd1, DigitalVideoDisc dvd2) {
+		addDigitalVideoDisc(dvd1);
+		addDigitalVideoDisc(dvd2);
+	}
+	
+	public void removeDigitalVideoDisc(DigitalVideoDisc disc) {
+		itemsOrdered.remove(disc);
+		qtyOrdered--;
+	}
+	
 	public void printCart() {
-		for (int i = 0; i < qtyOrdered; i++) {
-			System.out.println(itemsOrdered[i].toString());
+		for (DigitalVideoDisc disc : itemsOrdered) {
+				System.out.println(disc.toString());
 		}
 	}	
 	
 	public float totalCost() {
 		float sum = 0;
-		for (int i = 0; i < qtyOrdered; i++) {
-			sum += itemsOrdered[i].getCost();
+		for (DigitalVideoDisc disc : itemsOrdered) {
+			sum += disc.getCost();
 		}
 		return sum;
 	}
