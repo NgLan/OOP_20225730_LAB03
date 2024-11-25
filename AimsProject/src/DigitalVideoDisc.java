@@ -52,6 +52,10 @@ public class DigitalVideoDisc {
 		return cost;
 	}
 
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
 	@Override
 	public String toString() {
 		return "DigitalVideoDisc [title=" + title + ", category=" + category + ", director=" + director + ", length="
