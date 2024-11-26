@@ -63,28 +63,6 @@ public class Cart {
 		return sum;
 	}
 	
-	public void search(int id) {
-		boolean isFound = false;
-		for (DigitalVideoDisc disc : itemsOrdered) {
-			if (disc.getId() == id) {
-				System.out.println(disc.toString());
-				isFound = true;
-			}
-		}
-		if (!isFound) System.out.println("No match is found");
-	}
-	
-	public void search(String title) {
-		boolean isFound = false;
-		for (DigitalVideoDisc disc : itemsOrdered) {
-			if (disc.isMatch(title)) {
-				System.out.println(disc.toString());
-				isFound = true;
-			}
-		}
-		if (!isFound) System.out.println("No match is found");
-	}
-	
 	public void print() {
 		System.out.println("***********************CART***********************");
 		System.out.println("Ordered Items:");
