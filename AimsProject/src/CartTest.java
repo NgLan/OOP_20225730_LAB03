@@ -18,6 +18,8 @@ public class CartTest {
 
         // Test the print method
         cart.print();
+        cart.search(1);
+        cart.search("Star Wars");
         // To-do: Test the search methods here
     }
 }
