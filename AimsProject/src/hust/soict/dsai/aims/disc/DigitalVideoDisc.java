@@ -1,3 +1,5 @@
+package hust.soict.dsai.aims.disc;
+
 public class DigitalVideoDisc {
 	private String title;
 	private String category;
@@ -72,7 +74,7 @@ public class DigitalVideoDisc {
 		this.title = title;
 	}
 	
-	boolean isMatch(String title) {
+	public boolean isMatch(String title) {
 		if (this.title == title) return true;
 		else return false;
 	}
