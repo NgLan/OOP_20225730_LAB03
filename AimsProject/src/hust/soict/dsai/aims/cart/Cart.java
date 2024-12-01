@@ -13,7 +13,7 @@ public class Cart {
 		for (Media m : medias) {
 			if (itemsOrdered.size() < MAX_NUMBERS_ORDERED) {
 				itemsOrdered.add(m);
-				System.out.println(m.getTitle() + " has been added");
+				System.out.println(m.getTitle() + " has been added to the cart");
 			} else {
 				System.out.println("The cart is almost full");
 				break;
@@ -25,9 +25,9 @@ public class Cart {
 		for (Media m : medias) {
 			if (itemsOrdered.contains(m)) {
 				itemsOrdered.remove(m);
-				System.out.println(m.getTitle() + " has been removed");
+				System.out.println(m.getTitle() + " has been removed from the cart");
 			} else {
-				System.out.println("Don\'t have " + m.getTitle() + " in the cart");
+				System.out.println(m.getTitle() + " is not in the cart");
 			}
 		}
 	}
