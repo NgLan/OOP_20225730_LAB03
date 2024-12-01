@@ -21,22 +21,14 @@ public class Book extends Media {
 	}
 	
 	public void addAuthor(String authorName) {
-		boolean isAuthor = false;
-		for (String a : authors) {
-			if (a.equals(authorName)) isAuthor = true;
-		}
-		if (isAuthor) 
+		if (authors.contains(authorName))
 			System.out.println(authorName + " is already exists");
 		else 
 			authors.add(authorName);
 	}
 	
 	public void removeAuthor(String authorName) {
-		boolean isAuthor = false;
-		for (String a : authors) {
-			if (a.equals(authorName)) isAuthor = true;
-		}
-		if (isAuthor) 
+		if (authors.contains(authorName))
 			authors.remove(authorName);
 		else
 			System.out.println(authorName + " is not exists");
