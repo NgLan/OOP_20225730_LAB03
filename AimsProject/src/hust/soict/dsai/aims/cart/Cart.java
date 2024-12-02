@@ -73,6 +73,6 @@ public class Cart {
 		}
 		System.out.println("Total cost: " + totalCost());
 		System.out.println("***************************************************");
-	}	
+	}
 }
 
