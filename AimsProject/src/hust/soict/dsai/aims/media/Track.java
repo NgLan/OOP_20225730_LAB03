@@ -34,4 +34,9 @@ public class Track implements Playable {
 		}
 		return false;
 	}
+
+	@Override
+	public String toString() {
+		return "Track - " + this.getTitle() + " - " + this.getLength();
+	}
 }
