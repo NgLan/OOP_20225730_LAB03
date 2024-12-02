@@ -18,6 +18,11 @@ public class Aims {
 		DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin", "Animation", 18.99f);
 		anOrder.addMedia(dvd3);
 		
+		DigitalVideoDisc dvd4 = new DigitalVideoDisc("Aladin", "Animation", 18.99f);
+		anOrder.addMedia(dvd4);
+		
+		System.out.println(dvd4.equals(dvd2));
+		
 		//print total cost of the items in the cart
 		System.out.print("Total Cost is: ");
 		System.out.println(anOrder.totalCost());
