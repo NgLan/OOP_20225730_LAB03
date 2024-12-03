@@ -17,6 +17,11 @@ public abstract class Media {
 	public Media() {
 		
 	}
+	
+	public Media(String title) {
+		super();
+		this.title = title;
+	}
 
 	public Media(int id, String title) {
 		super();
@@ -65,8 +70,8 @@ public abstract class Media {
 	}
 	
 	public boolean isMatch(String title) {
-		if (this.getTitle() == title) return true;
-		else return false;
+		if (this.getTitle().equals(title)) return true;
+		return false;
 	}
 	
 	public boolean equals(Object obj) {

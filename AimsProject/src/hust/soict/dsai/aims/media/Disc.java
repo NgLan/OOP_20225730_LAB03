@@ -35,6 +35,4 @@ public class Disc extends Media {
 	public String getDirector() {
 		return director;
 	}
-
-	
 }

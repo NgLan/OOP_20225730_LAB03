@@ -2,11 +2,20 @@ package hust.soict.dsai.aims.cart;
 
 import java.util.ArrayList;
 
+import hust.soict.dsai.aims.media.DigitalVideoDisc;
 import hust.soict.dsai.aims.media.Media;
 
 public class Cart {
 	public static final int MAX_NUMBERS_ORDERED = 20;
 	private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
+	
+	public void clear() {
+		itemsOrdered.clear();
+	}
+	
+	public ArrayList<Media> getMediaList() {
+	    return itemsOrdered;
+	}
 	
 	public void addMedia(Media...medias) {
 		for (Media m : medias) {
@@ -39,28 +48,31 @@ public class Cart {
 		return sum;
 	}
 	
-	public void search(int id) {
-		boolean isFound = false;
+	public Media search(int id) {
 		for (Media m : itemsOrdered) {
 			if (m.getId() == id) {
-				System.out.println(m.toString());
-				isFound = true;
-				break;
+				return m;
 			}
 		}
-		if (!isFound) System.out.println("No match is found");
+		return null;
 	}
 	
-	public void search(String title) {
-		boolean isFound = false;
+	public Media search(String title) {
 		for (Media m : itemsOrdered) {
 			if (m.isMatch(title)) {
-				System.out.println(m.toString());
-				isFound = true;
-				break;
+				return m;
 			}
 		}
-		if (!isFound) System.out.println("No match is found");
+		return null;
+	}
+	
+	public int countDVD() {
+		int count = 0;
+		for (Media m : itemsOrdered) {
+			if (m instanceof DigitalVideoDisc) 
+				count++;
+		}
+		return count;
 	}
 	
 	public void print() {
