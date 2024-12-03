@@ -1,0 +1,18 @@
+1. What class should implement the Comparable interface? 
+Media vì class này đại diện cho các items khác như book, DVD hay CD.
+2. In those classes, how should you implement the compareTo()method be to reflect the ordering that we want? 
+Override lại phương thức compareTo() ở các class con của Media như Book, DigitalVideoDisc hay CompactDisc
+3. Can we have two ordering rules of the item (by title then cost and by cost then title) if we use this Comparable interface approach? 
+Không vì chỉ có một phương thức compareTo() để override và phương thức này chỉ có thể trả về 1 giá trị thôi.
+4. Suppose the DVDs has a different ordering rule from the other media types, that is by title, then decreasing length, then cost. How would you modify your code to allow this?
+    @Override
+    public int compareTo (Media other) {
+        if (other instanceof DigitalVideoDisc) {
+            DigitalVideoDisc otherDVD = (DigitalVideoDisc) other;
+            return Comparator.comparing(DigitalVideoDisc::getTitle)
+                             .thenComparing(Comparator.comparingInt(DigitalVideoDisc::getLength).reversed())
+                             .thenComparing(DigitalVideoDisc::getCost)
+                             .compare(this, otherDVD);
+        }
+        return super.compareTo(other); // Fallback to Media's compareTo
+    }
