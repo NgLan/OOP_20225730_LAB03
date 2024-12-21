@@ -67,10 +67,12 @@ public abstract class Media {
 	}
 	
 	public boolean equals(Object obj) {
-		if (obj instanceof Media) {
-			Media m = (Media) obj;
-			if (this.getTitle().equals(m.title)) return true;
-		}
-		return false;
-	}
+        Media media = (Media) obj;
+        try {
+            String title = media.getTitle();
+            return title.equals(this.getTitle());
+        } catch (NullPointerException e) {
+            return false;
+        }
+    }
 }
