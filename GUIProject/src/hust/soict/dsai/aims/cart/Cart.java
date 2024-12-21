@@ -4,16 +4,22 @@ import java.util.ArrayList;
 
 import hust.soict.dsai.aims.media.DigitalVideoDisc;
 import hust.soict.dsai.aims.media.Media;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class Cart {
 	public static final int MAX_NUMBERS_ORDERED = 20;
-	private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
-	
+	private ObservableList<Media> itemsOrdered = FXCollections.observableArrayList();
+
 	public void clear() {
 		itemsOrdered.clear();
 	}
 	
-	public ArrayList<Media> getMediaList() {
+	public ObservableList<Media> getItemsOrdered() {
+		return itemsOrdered;
+	}
+
+	public ObservableList<Media> getMediaList() {
 	    return itemsOrdered;
 	}
 	
