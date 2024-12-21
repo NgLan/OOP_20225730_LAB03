@@ -14,6 +14,7 @@ import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -21,9 +22,11 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
+import hust.soict.dsai.aims.cart.Cart;
 import hust.soict.dsai.aims.media.Book;
 import hust.soict.dsai.aims.media.CompactDisc;
 import hust.soict.dsai.aims.media.DigitalVideoDisc;
+import hust.soict.dsai.aims.media.Disc;
 import hust.soict.dsai.aims.media.Media;
 import hust.soict.dsai.aims.media.Playable;
 import hust.soict.dsai.aims.media.Track;
@@ -32,6 +35,7 @@ import hust.soict.dsai.swing.SwingAccumulator;
 
 public class StoreScreen extends JFrame {
 	private Store store;
+	private Cart cart = new Cart(); 
 	
 	public StoreScreen(Store store) {
 		this.store = store;
@@ -127,9 +131,14 @@ public class StoreScreen extends JFrame {
 			JPanel container = new JPanel();
 			container.setLayout(new FlowLayout(FlowLayout.CENTER));
 			
-			container.add(new JButton("Add to cart"));
+			JButton addToCartButton = new JButton("Add to cart");
+            container.add(addToCartButton);
+            addToCartButton.addActionListener(e -> cart.addMedia(media));
+            
 			if(media instanceof Playable) {
-				container.add(new JButton("Play"));
+				JButton playButton = new JButton("Play");
+				container.add(playButton);
+                playButton.addActionListener(e -> playMedia(media));
 			}
 			
 			this.add(Box.createVerticalGlue());
@@ -141,6 +150,17 @@ public class StoreScreen extends JFrame {
 			this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		}
 	}
+	
+	private void playMedia(Media media) {
+        JDialog dialog = new JDialog(this, "Playing Media", true);
+        dialog.setLayout(new BorderLayout());
+        dialog.add(new JLabel("Now playing: " + media.getTitle(), JLabel.CENTER), BorderLayout.CENTER);
+        dialog.setSize(300, 200);
+        dialog.setVisible(true);
+        
+        Playable playable = (Playable) media;
+        playable.play();
+    }
 	
 	public static void main(String[] args) {
 		Store store = new Store();

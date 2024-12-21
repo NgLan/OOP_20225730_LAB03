@@ -23,8 +23,8 @@ public class Track implements Playable {
 	}
 	
 	public void play() {
-		System.out.println("Playing DVD: " + this.getTitle());
-		System.out.println("DVD length: " + this.getLength());
+		System.out.println("Playing Track: " + this.getTitle());
+		System.out.println("Track length: " + this.getLength());
 	}
 	
 	public boolean equals(Object obj) {
